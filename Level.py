@@ -53,12 +53,7 @@ class Level:
                             surf = graphics['objects'][int(col)]
                             Tile((x, y), [self.visible_sprites, self.obstacle_sprites], 'object', surf)
 
-                """
-                if col == 'x':
-                    Tile((x, y), [self.visible_sprites, self.obstacle_sprites])
-                if col == 'p':
-                    self.player = Player((x, y), [self.visible_sprites], self.obstacle_sprites)
-        """
+
         self.player = Player(
             (2000, 1430),
             [self.visible_sprites],
