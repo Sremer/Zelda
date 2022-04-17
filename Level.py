@@ -83,7 +83,8 @@ class Level:
                                     monster_name,
                                     (x, y),
                                     [self.visible_sprites, self.attackable_sprites],
-                                    self.obstacle_sprites)
+                                    self.obstacle_sprites,
+                                    self.damage_player)
 
     def create_magic(self, style, strength, cost):
         print(style)
@@ -108,6 +109,13 @@ class Level:
                             target_sprite.kill()
                         else:
                             target_sprite.get_damage(self.player, attack_sprite.sprite_type)
+
+    def damage_player(self, amount, attack_type):
+        if self.player.vulnerable:
+            self.player.health -= amount
+            self.player.vulnerable = False
+            self.player.hurt_time = pygame.time.get_ticks()
+            # spawn particles
 
     def run(self):
         # update and draw the game
